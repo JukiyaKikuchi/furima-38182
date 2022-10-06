@@ -11,7 +11,7 @@
 | first_name         | string | null: false                |
 | last_name_kana     | string | null: false                |
 | first_name_kana    | string | null: false                |
-| birthday           | string | null: false                |
+| birthday           | date   | null: false                |
 
 ## Association
 - has_many : orders
@@ -20,18 +20,17 @@
 
 ## itemsテーブル
 
-| Column            | Type       | Options                            |
-|-------------------|------------|------------------------------------|
-| image             | string     | null: false                        |
-| item_name         | string     | null: false                        |
-| item_description  | text       | null: false                        |
-| category          | string     | null: false                        |
-| item_status       | string     | null: false                        |
-| delivery_cost     | string     | null: false                        |
-| delivery_date     | string     | null: false                        |
-| prefecture        | string     | null: false                        |
-| item_price        | string     | null: false                        |
-| user              | references | null: false, foreign_key: true     |
+| Column               | Type        | Options                            |
+|----------------------|-------------|------------------------------------|
+| item_name            | string      | null: false                        |
+| item_description     | text        | null: false                        |
+| category_id          | integer     | null: false                        |
+| item_status_id       | integer     | null: false                        |
+| delivery_cost_id     | integer     | null: false                        |
+| delivery_date_id     | integer     | null: false                        |
+| prefecture_id        | integer     | null: false                        |
+| item_price           | integer     | null: false                        |
+| user                 | references  | null: false, foreign_key: true     |
 
 ## Association
 - has_one: order
@@ -45,9 +44,9 @@
 | postcode        | string     | null: false                    |
 | city            | string     | null: false                    |
 | address         | string     | null: false                    |
-| building        | string     | null: false                    |
+| building        | string     |                                |
 | tell_number     | string     | null: false                    |
-| prefecture      | string     | null: false                    |
+| prefecture_id   | integer    | null: false                    |
 | order           | references | null: false, foreign_key: true |
 
 
@@ -64,6 +63,6 @@
 
 
 ## Association
-- has_one : deliveries
+- has_one : delivery
 - belongs_to : user
 - belongs_to : item
