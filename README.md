@@ -30,7 +30,7 @@
 | delivery_date_id     | integer     | null: false                        |
 | prefecture_id        | integer     | null: false                        |
 | item_price           | integer     | null: false                        |
-| user                 | references  | null: false, foreign_key: true     |
+| user_id              | references  | null: false, foreign_key: true     |
 
 ## Association
 - has_one: order
@@ -47,7 +47,7 @@
 | building        | string     |                                |
 | tell_number     | string     | null: false                    |
 | prefecture_id   | integer    | null: false                    |
-| order           | references | null: false, foreign_key: true |
+| order_id        | references | null: false, foreign_key: true |
 
 
 ## Association
@@ -58,8 +58,8 @@
 
 | Column          | Type       | Options                        |
 |-----------------|------------|--------------------------------|
-| user            | references | null: false, foreign_key: true |
-| item            | references | null: false, foreign_key: true |
+| user_id          | references | null: false, foreign_key: true |
+| item_id          | references | null: false, foreign_key: true |
 
 
 ## Association
