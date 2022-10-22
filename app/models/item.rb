@@ -2,6 +2,8 @@ class Item < ApplicationRecord
   validates :item_name, :item_description, :item_price, :image, presence: true
   validates_inclusion_of :item_price, in: 300..9999999
   validates_format_of :item_price, with: /\A[0-9]+\z/
+  validates :item_name, length: {maximum: 40}
+  validates :item_description, length: {maximum: 1000}
 
   belongs_to :user
   has_one_attached :image
