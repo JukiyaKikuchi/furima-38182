@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
   validates :item_name, :item_description, :item_price, :image, presence: true
-  validates_inclusion_of :item_price, in: 300..9999999
-  validates_format_of :item_price, with: /\A[0-9]+\z/
+  validates :item_price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :item_name, length: {maximum: 40}
   validates :item_description, length: {maximum: 1000}
 
