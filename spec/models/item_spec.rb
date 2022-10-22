@@ -71,22 +71,17 @@ RSpec.describe Item, type: :model do
       it '販売価格が300円未満だと出品できない' do
         @item.item_price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item price is not included in the list")
+        expect(@item.errors.full_messages).to include("Item price must be greater than or equal to 300")
       end
       it '販売価格が9,999,999円より大きいと出品できない' do
         @item.item_price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item price is not included in the list")
-      end
-      it '販売価格が全角数字だと出品できない' do
-        @item.item_price = '３００'
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Item price is not included in the list")
+        expect(@item.errors.full_messages).to include("Item price must be less than or equal to 9999999")
       end
       it '販売価格が文字だと出品できない' do
         @item.item_price = 'テスト'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item price is not included in the list")
+        expect(@item.errors.full_messages).to include("Item price is not a number")
       end
       it 'ユーザーが紐づいていないと出品できない' do
         @item.user = nil
