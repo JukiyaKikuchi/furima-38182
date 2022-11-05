@@ -52,7 +52,7 @@ RSpec.describe OrderDelivery, type: :model do
       it '電話番号が12桁以上では保存できない' do
         @order_delivery.tell_number = '123456789123'
         @order_delivery.valid?
-        expect(@order_delivery.errors.full_messages).to include("Tell number is too long (maximum is 11 characters)")
+        expect(@order_delivery.errors.full_messages).to include("Tell number is invalid")
       end
       it '電話番号に半角数値以外が含まれていては保存できない' do
         @order_delivery.tell_number = '123-4567-1234'

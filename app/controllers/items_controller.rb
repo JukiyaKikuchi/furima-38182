@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.user_id == current_user.id && @item.order != nil
+    if @item.order != nil
       redirect_to root_path
     end
   end
@@ -53,7 +53,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   def corect_user
-    @user = @item.user
-    redirect_to(items_path) unless @user == current_user
+    redirect_to root_path unless @item.user == current_user
   end
 end
